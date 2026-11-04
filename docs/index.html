@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>AV-JEPA: Audio-Visual Representations for Perception, World Modeling and Intuitive Physics</title>
+<!-- Anonymous supplementary page for the CVPR 2026 submission. Keep it free of author names, affiliations,
+     institution logos, analytics and external CDNs (fonts, scripts), so the review stays anonymous. -->
+<style>
+  :root {
+    --ink: #1f2328; --ink2: #57606a; --muted: #8c959f; --grid: #eaeef2; --card: #f6f8fa;
+    --video: #2f6db5; --audio: #1a9e77; --fused: #6a4fb3; --loss: #d64545; --accent: #6a4fb3;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 16px/1.55 Georgia, "Times New Roman", serif; color: var(--ink); background: #fff; }
+  header { text-align: center; padding: 48px 20px 24px; border-bottom: 1px solid var(--grid); }
+  h1 { font-size: 1.9rem; line-height: 1.25; margin: 0 auto 10px; max-width: 900px; }
+  .venue { color: var(--ink2); font-style: italic; }
+  .links { margin-top: 16px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .links a { font: 14px/1 system-ui, sans-serif; color: #fff; background: var(--ink); padding: 9px 16px;
+             border-radius: 999px; text-decoration: none; opacity: .55; pointer-events: none; }
+  nav { position: sticky; top: 0; background: rgba(255,255,255,.94); border-bottom: 1px solid var(--grid);
+        font: 14px system-ui, sans-serif; display: flex; gap: 18px; justify-content: center; padding: 10px; z-index: 2;
+        flex-wrap: wrap; }
+  nav a { color: var(--ink2); text-decoration: none; }
+  nav a:hover { color: var(--accent); }
+  main { max-width: 1040px; margin: 0 auto; padding: 0 20px 60px; }
+  section { padding-top: 36px; }
+  h2 { font-size: 1.45rem; border-bottom: 2px solid var(--grid); padding-bottom: 6px; }
+  h3 { font-size: 1.1rem; margin: 26px 0 8px; }
+  p.lead { color: var(--ink2); }
+  .tag { display: inline-block; font: 12px/1 system-ui, sans-serif; padding: 4px 8px; border-radius: 6px;
+         background: var(--card); color: var(--ink2); margin-right: 6px; }
+  .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+  .grid.two { grid-template-columns: repeat(auto-fill, minmax(460px, 1fr)); }
+  .example { background: var(--card); border-radius: 10px; padding: 12px; }
+  .example h4 { margin: 0 0 6px; font: 600 15px system-ui, sans-serif; }
+  .example p { margin: 8px 0 0; font-size: 14px; color: var(--ink2); }
+  .slot { aspect-ratio: 16 / 9; border: 2px dashed #c9d1d9; border-radius: 8px; display: flex; align-items: center;
+          justify-content: center; text-align: center; color: var(--muted); font: 13px system-ui, sans-serif;
+          background: #fff; padding: 8px; }
+  .slot code { font-size: 12px; }
+  .pair { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+  .opt { font: 13px system-ui, sans-serif; color: var(--ink2); }
+  .opt b.ok { color: var(--audio); } .opt b.no { color: var(--loss); }
+  .note { border-left: 3px solid var(--accent); background: #f7f5fc; padding: 10px 14px; border-radius: 0 8px 8px 0;
+          font-size: 14px; color: var(--ink2); }
+  pre { background: var(--card); padding: 14px; border-radius: 8px; overflow-x: auto; font-size: 13px; }
+  footer { text-align: center; color: var(--muted); font: 13px system-ui, sans-serif; padding: 30px 20px;
+           border-top: 1px solid var(--grid); }
+  @media (max-width: 560px) { .grid.two { grid-template-columns: 1fr; } h1 { font-size: 1.5rem; } }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>AV-JEPA: Audio-Visual Representations for Perception, World Modeling and Intuitive Physics</h1>
+  <div class="venue">Anonymous CVPR 2026 submission &middot; supplementary examples</div>
+  <div class="links">
+    <a href="#">Paper (after review)</a>
+    <a href="#">Code (upon acceptance)</a>
+    <a href="#">IntPhys-X data (upon acceptance)</a>
+    <a href="#">AVNav-Bench (upon acceptance)</a>
+  </div>
+</header>
+
+<nav>
+  <a href="#overview">Overview</a>
+  <a href="#intphysx">IntPhys-X</a>
+  <a href="#longcontext">Long context</a>
+  <a href="#avnav">AVNav-Bench</a>
+  <a href="#avjwm">AVJ-WM rollouts</a>
+  <a href="#avjepa">AV-JEPA</a>
+</nav>
+
+<main>
+
+<section id="overview">
+  <h2>Overview</h2>
+  <p class="lead">This page collects the audio-visual examples referenced in the paper. Play videos with sound:
+    most examples can only be judged by watching and listening together.</p>
+  <div class="slot" style="aspect-ratio: 21 / 9">Teaser figure / video<br><code>assets/teaser/teaser.mp4</code></div>
+  <div class="grid" style="margin-top:16px">
+    <div class="example"><h4>AV-JEPA</h4><p>One encoder for video, raw audio, or both, trained with intra- and
+      cross-modal ProtoLoss on 500&nbsp;ms chunks.</p></div>
+    <div class="example"><h4>AVJ-WM</h4><p>A causal audio-visual world model on the frozen AV-JEPA encoder, with
+      action adapters for planning.</p></div>
+    <div class="example"><h4>IntPhys-X</h4><p>Cross-modal intuitive physics: cross-modal matching and cross-modal
+      in-context learning.</p></div>
+    <div class="example"><h4>AVNav-Bench</h4><p>Audio-visual navigation to image and sound goals, offline and in
+      closed loop.</p></div>
+  </div>
+</section>
+
+<section id="intphysx">
+  <h2>IntPhys-X: cross-modal matching</h2>
+  <p class="lead">A query in one modality comes with two options in the other; exactly one stems from the same physical
+    event. In <span class="tag">v2a</span> items a silent video is matched to one of two soundtracks; in
+    <span class="tag">a2v</span> items a soundtrack is matched to one of two silent videos.</p>
+  <div class="note">Each example: the query, option A and option B, and the answer (hidden behind a toggle so the
+    reader can try first). Synthetic and real (recorded) versions where both exist.</div>
+
+  <h3>Temporal events</h3>
+  <div class="grid two">
+    <div class="example"><h4>Count <span class="tag">synthetic</span><span class="tag">real</span></h4>
+      <div class="slot">query + options<br><code>assets/intphysx/count_*.mp4</code></div>
+      <p>Seen vs. heard number of impacts.</p></div>
+    <div class="example"><h4>Sync <span class="tag">synthetic</span><span class="tag">real</span></h4>
+      <div class="slot">query + options<br><code>assets/intphysx/sync_*.mp4</code></div>
+      <p>Timing of individual impacts.</p></div>
+  </div>
+  <h3>Physical properties</h3>
+  <div class="grid two">
+    <div class="example"><h4>Size <span class="tag">synthetic</span><span class="tag">real</span></h4>
+      <div class="slot">query + options<br><code>assets/intphysx/size_*.mp4</code></div>
+      <p>Objects of the same kind at different scales.</p></div>
+    <div class="example"><h4>Material <span class="tag">synthetic</span><span class="tag">real</span></h4>
+      <div class="slot">query + options<br><code>assets/intphysx/material_*.mp4</code></div>
+      <p>Objects made of different materials.</p></div>
+  </div>
+  <h3>Spatial</h3>
+  <div class="grid two">
+    <div class="example"><h4>Localization <span class="tag">synthetic</span></h4>
+      <div class="slot">query + options (stereo, use headphones)<br><code>assets/intphysx/localization_*.mp4</code></div>
+      <p>Visual position of a source vs. stereo cues.</p></div>
+  </div>
+</section>
+
+<section id="longcontext">
+  <h2>IntPhys-X: cross-modal in-context learning (long context)</h2>
+  <p class="lead">A context clip with picture and sound binds sounds to visual events; an audio-only query continues
+    it, and the matching video option must be chosen. Scenarios increase in difficulty.</p>
+  <div class="grid">
+    <div class="example"><h4>Simon</h4>
+      <div class="slot">context &rarr; audio query &rarr; options<br><code>assets/longcontext/simon_*.mp4</code></div>
+      <p>Learn the cross-modal association between tones and lights.</p></div>
+    <div class="example"><h4>Random Walk</h4>
+      <div class="slot">context &rarr; audio query &rarr; final states<br><code>assets/longcontext/randomwalk_*.mp4</code></div>
+      <p>Count sounds and infer movements.</p></div>
+    <div class="example"><h4>3-Cups</h4>
+      <div class="slot">context &rarr; audio query &rarr; final states<br><code>assets/longcontext/cups_*.mp4</code></div>
+      <p>Sequential roll-out: the order of the swaps matters.</p></div>
+  </div>
+</section>
+
+<section id="avnav">
+  <h2>AVNav-Bench</h2>
+  <p class="lead">Navigation to image and sound goals with binaural audio. The world model plans and replans in closed
+    loop, with no policy in the loop.</p>
+  <div class="grid two">
+    <div class="example"><h4>Image goal, closed loop</h4>
+      <div class="slot">agent view + top-down path<br><code>assets/avnav/image_goal_*.mp4</code></div></div>
+    <div class="example"><h4>Sound goal, closed loop</h4>
+      <div class="slot">agent view (binaural) + top-down path<br><code>assets/avnav/sound_goal_*.mp4</code></div></div>
+    <div class="example"><h4>Candidate plans at a junction</h4>
+      <div class="slot">candidate endpoints and chosen plan<br><code>assets/avnav/plans_*.png</code></div></div>
+    <div class="example"><h4>Comparison with baselines</h4>
+      <div class="slot">same episode, different planners<br><code>assets/avnav/compare_*.mp4</code></div></div>
+  </div>
+</section>
+
+<section id="avjwm">
+  <h2>AVJ-WM rollouts</h2>
+  <p class="lead">Predicted future audio-visual states, shown through nearest-neighbour retrievals and per-chunk
+    surprise.</p>
+  <div class="grid two">
+    <div class="example"><h4>Rollout retrievals</h4>
+      <div class="slot">context &rarr; predicted chunks (retrieved)<br><code>assets/avjwm/rollout_*.mp4</code></div></div>
+    <div class="example"><h4>Surprise on a minimal pair</h4>
+      <div class="slot">per-chunk surprise, plausible vs. implausible<br><code>assets/avjwm/surprise_*.mp4</code></div></div>
+  </div>
+</section>
+
+<section id="avjepa">
+  <h2>AV-JEPA representations</h2>
+  <div class="grid two">
+    <div class="example"><h4>Dense video features</h4>
+      <div class="slot">PCA of frozen features<br><code>assets/avjepa/dense_pca_*.mp4</code></div></div>
+    <div class="example"><h4>Sound-prompted segmentation</h4>
+      <div class="slot">audio query &rarr; heat map<br><code>assets/avjepa/av_seg_*.mp4</code></div></div>
+  </div>
+</section>
+
+<section id="cite">
+  <h2>Citation</h2>
+  <pre>Citation will be added after the review process.</pre>
+</section>
+
+</main>
+
+<footer>Anonymous submission. This page contains no tracking and loads no external resources.</footer>
+
+</body>
+</html>
